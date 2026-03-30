@@ -1,0 +1,11 @@
+cashflow_date,deal_name,deal_reference,cashflow_type,amount,currency,notes
+2022-01-01,My Real Estate Deal,RE-001,INVESTMENT,50000,SAR,Initial capital
+2022-07-01,My Real Estate Deal,RE-001,DISTRIBUTION,3500,SAR,Semi-annual return
+2023-01-01,My Real Estate Deal,RE-001,DISTRIBUTION,3500,SAR,Semi-annual return
+2023-12-31,My Real Estate Deal,RE-001,VALUATION,54000,SAR,Year-end valuation
+2023-03-01,Tech Fund,TF-001,INVESTMENT,25000,SAR,Fund subscription
+2023-09-01,Tech Fund,TF-001,DISTRIBUTION,1875,SAR,Quarterly distribution
+2023-12-31,Tech Fund,TF-001,VALUATION,26500,SAR,NAV update
+2023-06-01,Sukuk Bond,SK-001,INVESTMENT,100000,SAR,Bond purchase
+2023-12-01,Sukuk Bond,SK-001,DISTRIBUTION,3250,SAR,Profit payment
+2024-06-01,Sukuk Bond,SK-001,REDEMPTION,103250,SAR,Maturity redemption
