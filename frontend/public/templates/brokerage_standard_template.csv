@@ -1,0 +1,7 @@
+trade_date,symbol,asset_name,transaction_type,quantity,price,fees,net_amount,currency
+2024-01-15,2222,Saudi Aramco,BUY,100,29.50,14.75,2964.75,SAR
+2024-02-20,2222,Saudi Aramco,SELL,50,32.00,8.00,1592.00,SAR
+2024-03-10,1120,Al Rajhi Bank,BUY,50,95.00,23.75,4773.75,SAR
+2024-04-01,2222,Saudi Aramco,DIVIDEND,,,0,250.00,SAR
+2024-01-01,,,DEPOSIT,,,0,50000.00,SAR
+2024-03-31,,,WITHDRAWAL,,,0,5000.00,SAR
