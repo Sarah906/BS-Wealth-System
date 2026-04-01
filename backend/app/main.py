@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.core.logging import setup_logging, logger
+import app.db.models  # noqa: F401 — registers all models so relationships resolve correctly
 from app.api.v1.router import api_router
 
 setup_logging()
