@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth OS — Developer Manual</title>
+<style>
+  body {
+    font-family: "Calibri", "Arial", sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #1a1a1a;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 40px;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    color: #1F3864;
+    border-bottom: 3px solid #1F3864;
+    padding-bottom: 8px;
+    margin-top: 0;
+  }
+  h2 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #1F3864;
+    border-bottom: 1px solid #BDD7EE;
+    padding-bottom: 4px;
+    margin-top: 36px;
+  }
+  h3 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #2E5F8A;
+    margin-top: 24px;
+  }
+  .cover {
+    text-align: center;
+    padding: 80px 0 60px 0;
+    border-bottom: 2px solid #1F3864;
+    margin-bottom: 50px;
+  }
+  .cover h1 {
+    font-size: 32pt;
+    border: none;
+    padding-bottom: 0;
+  }
+  .cover .subtitle {
+    font-size: 16pt;
+    color: #2E5F8A;
+    margin-top: 10px;
+  }
+  .cover .meta {
+    font-size: 10pt;
+    color: #666;
+    margin-top: 30px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 10.5pt;
+  }
+  th {
+    background-color: #1F3864;
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: bold;
+  }
+  td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #D9E2F3;
+  }
+  tr:nth-child(even) td {
+    background-color: #EBF3FB;
+  }
+  pre, code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 9.5pt;
+  }
+  pre {
+    background-color: #F2F2F2;
+    border-left: 4px solid #1F3864;
+    padding: 12px 16px;
+    overflow-x: auto;
+    margin: 12px 0;
+  }
+  code {
+    background-color: #F2F2F2;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .toc {
+    background-color: #EBF3FB;
+    border: 1px solid #BDD7EE;
+    padding: 20px 28px;
+    margin: 24px 0;
+    border-radius: 4px;
+  }
+  .toc h2 {
+    margin-top: 0;
+    font-size: 13pt;
+    border: none;
+    color: #1F3864;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .toc li {
+    margin: 4px 0;
+    color: #2E5F8A;
+  }
+  .note {
+    background-color: #FFF8DC;
+    border-left: 4px solid #FFC000;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  .important {
+    background-color: #FFEBEE;
+    border-left: 4px solid #C00000;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  ul li, ol li {
+    margin: 4px 0;
+  }
+  @media print {
+    body { margin: 0; padding: 20px 40px; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Wealth OS</h1>
+  <div class="subtitle">Developer Manual</div>
+  <div class="meta">
+    Version 1.0 &nbsp;|&nbsp; April 2026<br>
+    BS Wealth System — Technical Documentation
+  </div>
+</div>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li>Overview</li>
+    <li>Tech Stack</li>
+    <li>Project Structure</li>
+    <li>Local Setup</li>
+    <li>Environment Variables</li>
+    <li>Database</li>
+    <li>Backend Architecture</li>
+    <li>API Reference</li>
+    <li>Parser Framework</li>
+    <li>Calculators</li>
+    <li>Frontend Architecture</li>
+    <li>Running Tests</li>
+    <li>Adding a New Parser</li>
+    <li>Adding a New API Endpoint</li>
+    <li>Deployment</li>
+  </ol>
+</div>
+
+<h2>1. Overview</h2>
+<p>Wealth OS is a full-stack personal wealth management system designed for Saudi and international investors. It tracks brokerage holdings and private deal investments, provides portfolio analytics, supports CSV/XLSX imports from 11 Saudi platforms, and delivers a modern dashboard with allocation charts and risk insights.</p>
+
+<h2>2. Tech Stack</h2>
+<table>
+  <tr><th>Layer</th><th>Technology</th><th>Version</th></tr>
+  <tr><td>Backend API</td><td>FastAPI</td><td>0.111</td></tr>
+  <tr><td>Runtime</td><td>Python</td><td>3.11</td></tr>
+  <tr><td>ORM</td><td>SQLAlchemy</td><td>2.0</td></tr>
+  <tr><td>Database</td><td>PostgreSQL</td><td>15</td></tr>
+  <tr><td>Migrations</td><td>Alembic</td><td>1.13</td></tr>
+  <tr><td>Authentication</td><td>JWT (python-jose) + bcrypt (passlib)</td><td>—</td></tr>
+  <tr><td>Frontend</td><td>Next.js + TypeScript + Tailwind CSS</td><td>14</td></tr>
+  <tr><td>Charts</td><td>Recharts</td><td>—</td></tr>
+  <tr><td>Containerization</td><td>Docker + Docker Compose</td><td>—</td></tr>
+  <tr><td>Financial math</td><td>scipy (XIRR via Newton-Raphson)</td><td>1.13</td></tr>
+  <tr><td>Data parsing</td><td>pandas + openpyxl</td><td>—</td></tr>
+</table>
+
+<h2>3. Project Structure</h2>
+<pre>
+BS-Wealth-System/
+├── backend/
+│   ├── app/
+│   │   ├── api/v1/          # Route handlers (9 routers)
+│   │   │   ├── auth.py
+│   │   │   ├── platforms.py
+│   │   │   ├── accounts.py
+│   │   │   ├── assets.py
+│   │   │   ├── deals.py
+│   │   │   ├── transactions.py
+│   │   │   ├── cashflows.py
+│   │   │   ├── imports.py
+│   │   │   └── analytics.py
+│   │   ├── calculators/     # Financial calculation engines
+│   │   │   ├── brokerage_calc.py   (FIFO P&L)
+│   │   │   ├── deal_calc.py        (XIRR)
+│   │   │   └── portfolio_calc.py   (Aggregation)
+│   │   ├── core/            # Config, security, logging
+│   │   ├── db/              # Base, models registry, session
+│   │   ├── models/          # 11 SQLAlchemy ORM models
+│   │   ├── parsers/         # 13 CSV/XLSX import parsers
+│   │   ├── schemas/         # Pydantic request/response schemas
+│   │   ├── scripts/         # seed.py
+│   │   └── services/        # market_data, insights
+│   ├── alembic/             # Database migrations
+│   ├── tests/               # pytest test suite
+│   ├── Dockerfile
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── app/             # Next.js App Router pages
+│   │   ├── components/      # Reusable UI components
+│   │   ├── lib/             # API client, utilities
+│   │   └── types/           # TypeScript interfaces
+│   ├── Dockerfile
+│   └── package.json
+├── templates/               # CSV import templates
+├── infra/                   # GCP and Azure deployment notes
+├── docker-compose.yml
+└── .env.example
+</pre>
+
+<h2>4. Local Setup</h2>
+
+<h3>Prerequisites</h3>
+<ul>
+  <li>Docker Desktop (Mac / Windows / Linux)</li>
+  <li>Git</li>
+  <li>VS Code (recommended)</li>
+</ul>
+
+<h3>Steps</h3>
+<pre>
+git clone https://github.com/Sarah906/BS-Wealth-System.git
+cd BS-Wealth-System
+cp .env.example .env
+docker compose up --build
+</pre>
+
+<h3>Access Points</h3>
+<table>
+  <tr><th>Service</th><th>URL</th></tr>
+  <tr><td>Frontend App</td><td>http://localhost:3000</td></tr>
+  <tr><td>Backend API</td><td>http://localhost:8000</td></tr>
+  <tr><td>Swagger Docs</td><td>http://localhost:8000/docs</td></tr>
+  <tr><td>ReDoc Docs</td><td>http://localhost:8000/redoc</td></tr>
+</table>
+
+<div class="note"><strong>Demo Login:</strong> username = <code>demo</code> &nbsp;|&nbsp; password = <code>Demo@1234</code></div>
+
+<h2>5. Environment Variables</h2>
+<table>
+  <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
+  <tr><td>POSTGRES_DB</td><td>wealthos</td><td>Database name</td></tr>
+  <tr><td>POSTGRES_USER</td><td>wealthos</td><td>Database user</td></tr>
+  <tr><td>POSTGRES_PASSWORD</td><td>wealthos_secret</td><td>Database password</td></tr>
+  <tr><td>SECRET_KEY</td><td>change_me_in_production...</td><td>JWT signing key — change in production</td></tr>
+  <tr><td>ALGORITHM</td><td>HS256</td><td>JWT algorithm</td></tr>
+  <tr><td>ACCESS_TOKEN_EXPIRE_MINUTES</td><td>1440</td><td>Token lifetime (24 hours)</td></tr>
+  <tr><td>ENVIRONMENT</td><td>development</td><td>development or production</td></tr>
+  <tr><td>LOG_LEVEL</td><td>INFO</td><td>Logging verbosity</td></tr>
+  <tr><td>CORS_ORIGINS</td><td>http://localhost:3000</td><td>Allowed frontend origins</td></tr>
+  <tr><td>NEXT_PUBLIC_API_URL</td><td>http://localhost:8000</td><td>Backend URL used by frontend</td></tr>
+</table>
+
+<h2>6. Database</h2>
+
+<h3>Models (11 tables)</h3>
+<table>
+  <tr><th>Model</th><th>Table</th><th>Description</th></tr>
+  <tr><td>User</td><td>users</td><td>Authentication and profile</td></tr>
+  <tr><td>Platform</td><td>platforms</td><td>Brokers and investment platforms</td></tr>
+  <tr><td>Account</td><td>accounts</td><td>User accounts per platform</td></tr>
+  <tr><td>Asset</td><td>assets</td><td>Stocks, sukuk, funds, etc.</td></tr>
+  <tr><td>Deal</td><td>deals</td><td>Private equity / deal investments</td></tr>
+  <tr><td>Transaction</td><td>transactions</td><td>Buy/sell/dividend/fee records</td></tr>
+  <tr><td>DealCashflow</td><td>deal_cashflows</td><td>Capital calls and distributions</td></tr>
+  <tr><td>PriceHistory</td><td>price_history</td><td>Daily closing prices</td></tr>
+  <tr><td>FXRate</td><td>fx_rates</td><td>Currency exchange rates</td></tr>
+  <tr><td>RawImport</td><td>raw_imports</td><td>Import job records</td></tr>
+  <tr><td>ImportMapping</td><td>import_mappings</td><td>Column mapping configs per platform</td></tr>
+</table>
+
+<h3>Migration Commands</h3>
+<pre>
+# Apply all pending migrations
+docker compose exec backend alembic upgrade head
+
+# Create a new migration after model changes
+docker compose exec backend alembic revision --autogenerate -m "your description"
+
+# Roll back one step
+docker compose exec backend alembic downgrade -1
+</pre>
+
+<h3>Re-run Seed Data</h3>
+<pre>
+docker compose exec backend python -m app.scripts.seed
+</pre>
+<p>Seed creates: 11 Saudi platforms, 1 demo user, 8 sample deals, brokerage transactions, 5-year mock price history.</p>
+
+<h2>7. Backend Architecture</h2>
+
+<h3>Request Flow</h3>
+<pre>
+HTTP Request
+  → FastAPI router (api/v1/*.py)
+  → Pydantic schema validation
+  → Business logic / calculator
+  → SQLAlchemy ORM
+  → PostgreSQL
+  → Pydantic response schema
+  → JSON response
+</pre>
+
+<h3>Authentication</h3>
+<p>JWT bearer tokens. Every protected endpoint uses the <code>get_current_user</code> dependency from <code>api/deps.py</code>.</p>
+<p>Token flow:</p>
+<ol>
+  <li>Call <code>POST /api/v1/auth/login</code> — receives <code>access_token</code></li>
+  <li>Include in all subsequent requests: <code>Authorization: Bearer &lt;token&gt;</code></li>
+</ol>
+
+<h2>8. API Reference</h2>
+<p>Base URL: <code>http://localhost:8000/api/v1</code></p>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/auth/login</td><td>Get JWT token</td></tr>
+  <tr><td>POST</td><td>/auth/register</td><td>Create account</td></tr>
+  <tr><td>GET</td><td>/platforms</td><td>List all platforms</td></tr>
+  <tr><td>GET / POST</td><td>/accounts</td><td>User accounts</td></tr>
+  <tr><td>GET / POST</td><td>/assets</td><td>Assets</td></tr>
+  <tr><td>GET / POST</td><td>/deals</td><td>Private deals</td></tr>
+  <tr><td>GET / POST</td><td>/transactions</td><td>Brokerage transactions</td></tr>
+  <tr><td>GET / POST</td><td>/cashflows</td><td>Deal cashflows</td></tr>
+  <tr><td>POST</td><td>/imports/upload</td><td>Upload CSV/XLSX file</td></tr>
+  <tr><td>POST</td><td>/imports/run</td><td>Execute import job</td></tr>
+  <tr><td>GET</td><td>/imports/history</td><td>Import job history</td></tr>
+  <tr><td>GET</td><td>/analytics/overview</td><td>Portfolio summary stats</td></tr>
+  <tr><td>GET</td><td>/analytics/allocation</td><td>Allocation breakdown</td></tr>
+  <tr><td>GET</td><td>/analytics/cashflows</td><td>Monthly cashflow chart data</td></tr>
+  <tr><td>GET</td><td>/analytics/insights</td><td>Risk alerts and recommendations</td></tr>
+</table>
+<div class="note">Full interactive documentation is available at <strong>http://localhost:8000/docs</strong></div>
+
+<h2>9. Parser Framework</h2>
+
+<h3>Architecture</h3>
+<pre>
+parsers/
+├── base.py               # BaseParser (abstract class)
+├── brokerage_base.py     # BrokerageParser extends BaseParser
+├── deal_base.py          # DealParser extends BaseParser
+└── generic_parsers.py    # All platform-specific parsers
+</pre>
+
+<h3>Implemented Parsers</h3>
+<table>
+  <tr><th>Parser Class</th><th>Platform</th><th>Type</th></tr>
+  <tr><td>DerayahParser</td><td>Derayah</td><td>Brokerage</td></tr>
+  <tr><td>AlRajhiParser</td><td>Al Rajhi Capital</td><td>Brokerage</td></tr>
+  <tr><td>AlinmaParser</td><td>Alinma Invest</td><td>Brokerage</td></tr>
+  <tr><td>TamraParser</td><td>Tamra</td><td>Deals</td></tr>
+  <tr><td>AseelParser</td><td>Aseel</td><td>Deals</td></tr>
+  <tr><td>SukukParser</td><td>Generic Sukuk</td><td>Deals</td></tr>
+  <tr><td>ManafaParser</td><td>Manafa</td><td>Deals</td></tr>
+  <tr><td>SafqahParser</td><td>Safqah</td><td>Deals</td></tr>
+  <tr><td>TarmeezParser</td><td>Tarmeez</td><td>Brokerage</td></tr>
+  <tr><td>AwaedParser</td><td>Awaed</td><td>Deals</td></tr>
+  <tr><td>DerayahSmartParser</td><td>Derayah (smart)</td><td>Brokerage</td></tr>
+</table>
+
+<h2>10. Calculators</h2>
+
+<h3>Brokerage Calculator (brokerage_calc.py)</h3>
+<p>Uses <strong>FIFO</strong> (First In, First Out) cost basis method.</p>
+<table>
+  <tr><th>Output</th><th>Description</th></tr>
+  <tr><td>realized_pnl</td><td>Profit/loss from sold positions</td></tr>
+  <tr><td>unrealized_pnl</td><td>Current open position gain/loss</td></tr>
+  <tr><td>total_fees</td><td>Commissions and charges</td></tr>
+  <tr><td>dividend_income</td><td>Total dividends received</td></tr>
+  <tr><td>win_rate</td><td>Percentage of profitable trades</td></tr>
+  <tr><td>expectancy</td><td>Average expected gain per trade</td></tr>
+</table>
+
+<h3>Deal Calculator (deal_calc.py)</h3>
+<p>Uses <strong>XIRR</strong> (Extended Internal Rate of Return) via Newton-Raphson iteration.</p>
+<table>
+  <tr><th>Output</th><th>Description</th></tr>
+  <tr><td>invested_capital</td><td>Total capital calls</td></tr>
+  <tr><td>distributed_capital</td><td>Total distributions received</td></tr>
+  <tr><td>nav</td><td>Current net asset value</td></tr>
+  <tr><td>roi</td><td>Return on investment (%)</td></tr>
+  <tr><td>xirr</td><td>Annualized return rate (%)</td></tr>
+  <tr><td>moic</td><td>Multiple on invested capital</td></tr>
+</table>
+
+<h2>11. Frontend Architecture</h2>
+
+<h3>Pages</h3>
+<table>
+  <tr><th>Route</th><th>Page</th><th>Description</th></tr>
+  <tr><td>/login</td><td>Login</td><td>JWT authentication form</td></tr>
+  <tr><td>/overview</td><td>Overview Dashboard</td><td>Portfolio summary, allocation pies, cashflow bar chart</td></tr>
+  <tr><td>/investments</td><td>Investments</td><td>Brokerage performance table + deals table</td></tr>
+  <tr><td>/insights</td><td>Insights</td><td>Risk alerts sorted by severity</td></tr>
+  <tr><td>/imports</td><td>Imports</td><td>File upload, parser selection, import history</td></tr>
+</table>
+
+<h3>Key Files</h3>
+<table>
+  <tr><th>File</th><th>Purpose</th></tr>
+  <tr><td>src/lib/api.ts</td><td>Axios API client with automatic JWT attachment</td></tr>
+  <tr><td>src/lib/utils.ts</td><td>Currency, percentage, and date formatting helpers</td></tr>
+  <tr><td>src/types/index.ts</td><td>TypeScript interfaces for all API types</td></tr>
+  <tr><td>src/components/layout/AppLayout.tsx</td><td>App shell with sidebar navigation</td></tr>
+  <tr><td>src/components/charts/AllocationPie.tsx</td><td>Recharts pie chart component</td></tr>
+  <tr><td>src/components/charts/CashflowBar.tsx</td><td>Recharts bar chart component</td></tr>
+</table>
+
+<h2>12. Running Tests</h2>
+<pre>
+# Run all tests
+docker compose exec backend pytest
+
+# Run with verbose output
+docker compose exec backend pytest -v
+
+# Run a specific file
+docker compose exec backend pytest tests/test_brokerage_calc.py
+
+# Run with coverage report
+docker compose exec backend pytest --cov=app
+</pre>
+
+<table>
+  <tr><th>File</th><th>Tests</th></tr>
+  <tr><td>tests/test_brokerage_calc.py</td><td>7 tests — FIFO calculator</td></tr>
+  <tr><td>tests/test_deal_calc.py</td><td>7 tests — XIRR calculator</td></tr>
+</table>
+
+<h2>13. Adding a New Parser</h2>
+<ol>
+  <li>Open <code>backend/app/parsers/generic_parsers.py</code></li>
+  <li>Add a new class extending <code>BrokerageParser</code> or <code>DealParser</code></li>
+  <li>Implement the <code>parse(file_path)</code> method — return a list of transaction dicts</li>
+  <li>Register the parser in <code>backend/app/api/v1/imports.py</code></li>
+  <li>Add a CSV template to <code>templates/</code> so users know the expected column format</li>
+</ol>
+
+<h2>14. Adding a New API Endpoint</h2>
+<ol>
+  <li>Create or open a router file in <code>backend/app/api/v1/</code></li>
+  <li>Add your route using <code>@router.get()</code> or <code>@router.post()</code></li>
+  <li>Use <code>Depends(get_db)</code> and <code>Depends(get_current_user)</code> for database and auth access</li>
+  <li>Register the router in <code>backend/app/api/v1/router.py</code></li>
+  <li>Add a Pydantic schema in <code>backend/app/schemas/</code> for request/response validation</li>
+</ol>
+
+<h2>15. Deployment</h2>
+
+<h3>GCP (Cloud Run)</h3>
+<p>See <code>infra/gcp/notes.md</code> for full steps.</p>
+<ol>
+  <li>Push images to Google Artifact Registry</li>
+  <li>Deploy backend to Cloud Run</li>
+  <li>Deploy frontend to Cloud Run</li>
+  <li>Use Cloud SQL for PostgreSQL</li>
+  <li>Set environment variables via Secret Manager</li>
+</ol>
+
+<h3>Azure (App Service)</h3>
+<p>See <code>infra/azure/notes.md</code> for full steps.</p>
+<ol>
+  <li>Push images to Azure Container Registry</li>
+  <li>Deploy via Azure App Service (containers)</li>
+  <li>Use Azure Database for PostgreSQL</li>
+  <li>Configure environment variables in App Service settings</li>
+</ol>
+
+<h3>Production Checklist</h3>
+<ul>
+  <li>Change <code>SECRET_KEY</code> to a random 32+ character string</li>
+  <li>Set <code>ENVIRONMENT=production</code></li>
+  <li>Set a strong <code>POSTGRES_PASSWORD</code></li>
+  <li>Set <code>CORS_ORIGINS</code> to your actual frontend domain</li>
+  <li>Enable HTTPS (handled automatically by Cloud Run / App Service)</li>
+  <li>Set up automated database backups</li>
+</ul>
+
+<div class="important" style="margin-top:40px;">
+  <strong>Security Note:</strong> Never commit your <code>.env</code> file to version control. It is listed in <code>.gitignore</code> by default.
+</div>
+
+</body>
+</html>
