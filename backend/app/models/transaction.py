@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 import enum
 
 from app.db.base import Base
+from app.models.import_record import RawImport  # noqa: F401
 
 
 class TransactionType(str, enum.Enum):
