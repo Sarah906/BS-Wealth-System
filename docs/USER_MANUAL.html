@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth OS — User Manual</title>
+<style>
+  body {
+    font-family: "Calibri", "Arial", sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #1a1a1a;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 40px;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    color: #1F3864;
+    border-bottom: 3px solid #1F3864;
+    padding-bottom: 8px;
+    margin-top: 0;
+  }
+  h2 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #1F3864;
+    border-bottom: 1px solid #BDD7EE;
+    padding-bottom: 4px;
+    margin-top: 36px;
+  }
+  h3 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #2E5F8A;
+    margin-top: 24px;
+  }
+  .cover {
+    text-align: center;
+    padding: 80px 0 60px 0;
+    border-bottom: 2px solid #1F3864;
+    margin-bottom: 50px;
+  }
+  .cover h1 {
+    font-size: 32pt;
+    border: none;
+    padding-bottom: 0;
+  }
+  .cover .subtitle {
+    font-size: 16pt;
+    color: #2E5F8A;
+    margin-top: 10px;
+  }
+  .cover .meta {
+    font-size: 10pt;
+    color: #666;
+    margin-top: 30px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 10.5pt;
+  }
+  th {
+    background-color: #1F3864;
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: bold;
+  }
+  td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #D9E2F3;
+  }
+  tr:nth-child(even) td {
+    background-color: #EBF3FB;
+  }
+  code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 9.5pt;
+    background-color: #F2F2F2;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .toc {
+    background-color: #EBF3FB;
+    border: 1px solid #BDD7EE;
+    padding: 20px 28px;
+    margin: 24px 0;
+    border-radius: 4px;
+  }
+  .toc h2 {
+    margin-top: 0;
+    font-size: 13pt;
+    border: none;
+    color: #1F3864;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .toc li {
+    margin: 4px 0;
+    color: #2E5F8A;
+  }
+  .tip {
+    background-color: #E8F5E9;
+    border-left: 4px solid #388E3C;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  .note {
+    background-color: #FFF8DC;
+    border-left: 4px solid #FFC000;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    margin: 12px 0;
+    gap: 14px;
+  }
+  .step-num {
+    background-color: #1F3864;
+    color: white;
+    font-weight: bold;
+    font-size: 11pt;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 9pt;
+    font-weight: bold;
+  }
+  .badge-red { background-color: #FFEBEE; color: #C00000; }
+  .badge-yellow { background-color: #FFF8DC; color: #B8860B; }
+  .badge-blue { background-color: #E3F2FD; color: #1565C0; }
+  .badge-green { background-color: #E8F5E9; color: #2E7D32; }
+  .section-icon {
+    font-size: 28pt;
+    margin-bottom: 8px;
+  }
+  ul li, ol li { margin: 5px 0; }
+  @media print {
+    body { margin: 0; padding: 20px 40px; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Wealth OS</h1>
+  <div class="subtitle">User Manual</div>
+  <div class="meta">
+    Version 1.0 &nbsp;|&nbsp; April 2026<br>
+    BS Wealth System — End User Guide
+  </div>
+</div>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li>Introduction</li>
+    <li>Getting Started — Logging In</li>
+    <li>Overview Dashboard</li>
+    <li>Investments Page</li>
+    <li>Insights Page</li>
+    <li>Imports Page</li>
+    <li>Supported Platforms</li>
+    <li>CSV Import Templates</li>
+    <li>Frequently Asked Questions</li>
+  </ol>
+</div>
+
+<h2>1. Introduction</h2>
+<p>Wealth OS is a personal wealth management system that helps you track all your investments in one place. Whether you invest through Saudi brokerage platforms (Derayah, Al Rajhi, Alinma) or in private deals and funds, Wealth OS gives you a complete picture of your portfolio performance.</p>
+
+<h3>What You Can Do</h3>
+<ul>
+  <li><strong>Track brokerage holdings</strong> — stocks, ETFs, sukuk across all your accounts</li>
+  <li><strong>Monitor private deals</strong> — capital calls, distributions, XIRR returns</li>
+  <li><strong>Import statements</strong> — upload CSV or Excel files from your broker</li>
+  <li><strong>View analytics</strong> — allocation charts, cashflow timelines, portfolio summary</li>
+  <li><strong>Get insights</strong> — automatic risk alerts and recommendations</li>
+</ul>
+
+<h2>2. Getting Started — Logging In</h2>
+
+<div class="step">
+  <div class="step-num">1</div>
+  <div>Open your browser and go to <strong>http://localhost:3000</strong></div>
+</div>
+<div class="step">
+  <div class="step-num">2</div>
+  <div>You will see the <strong>Login page</strong></div>
+</div>
+<div class="step">
+  <div class="step-num">3</div>
+  <div>Enter your credentials:<br>
+    <strong>Username:</strong> <code>demo</code><br>
+    <strong>Password:</strong> <code>Demo@1234</code>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">4</div>
+  <div>Click <strong>Login</strong> — you will be taken to the Overview Dashboard</div>
+</div>
+
+<div class="tip"><strong>Tip:</strong> Your session stays active for 24 hours. After that you will need to log in again.</div>
+
+<h3>Navigation</h3>
+<p>Use the <strong>sidebar on the left</strong> to move between pages:</p>
+<table>
+  <tr><th>Menu Item</th><th>What It Shows</th></tr>
+  <tr><td>Overview</td><td>Portfolio summary, charts, total value</td></tr>
+  <tr><td>Investments</td><td>Brokerage holdings and private deals</td></tr>
+  <tr><td>Insights</td><td>Risk alerts and recommendations</td></tr>
+  <tr><td>Imports</td><td>Upload and manage data imports</td></tr>
+</table>
+
+<h2>3. Overview Dashboard</h2>
+<p>This is the first page you see after logging in. It gives a high-level snapshot of your entire portfolio.</p>
+
+<h3>Summary Cards (Top Row)</h3>
+<table>
+  <tr><th>Card</th><th>What It Means</th></tr>
+  <tr><td>Total Portfolio Value</td><td>Combined value of all your holdings at current prices</td></tr>
+  <tr><td>Total Invested</td><td>Total amount you have put in (cost basis)</td></tr>
+  <tr><td>Unrealized P&amp;L</td><td>Paper gain or loss on open positions</td></tr>
+  <tr><td>Realized P&amp;L</td><td>Actual profit or loss from closed trades</td></tr>
+  <tr><td>Total Return</td><td>Overall portfolio return percentage</td></tr>
+</table>
+
+<h3>Allocation Charts</h3>
+<p>Three pie charts show how your portfolio is distributed:</p>
+<ul>
+  <li><strong>By Platform</strong> — which broker holds the most of your money</li>
+  <li><strong>By Asset Type</strong> — stocks vs. sukuk vs. funds vs. deals</li>
+  <li><strong>By Currency</strong> — SAR vs. USD vs. other currencies</li>
+</ul>
+
+<h3>Monthly Cashflow Chart</h3>
+<p>A bar chart at the bottom shows money in (green) vs. money out (red) each month. This helps you see your investment activity over time.</p>
+
+<h2>4. Investments Page</h2>
+<p>Shows the details of your individual holdings split into two tabs.</p>
+
+<h3>Tab 1 — Brokerage</h3>
+<p>A table of all your stock/sukuk/fund holdings across all brokerage accounts.</p>
+<table>
+  <tr><th>Column</th><th>Description</th></tr>
+  <tr><td>Symbol</td><td>Stock ticker (e.g. 2222 for Aramco)</td></tr>
+  <tr><td>Asset Name</td><td>Full name of the stock or fund</td></tr>
+  <tr><td>Platform</td><td>Which broker holds this position</td></tr>
+  <tr><td>Quantity</td><td>Number of shares/units you own</td></tr>
+  <tr><td>Avg. Cost</td><td>Your average purchase price (FIFO)</td></tr>
+  <tr><td>Current Price</td><td>Latest market price</td></tr>
+  <tr><td>Market Value</td><td>Current total value (Qty × Price)</td></tr>
+  <tr><td>Unrealized P&amp;L</td><td>Gain/loss if you sold today</td></tr>
+  <tr><td>Return %</td><td>Percentage return on this position</td></tr>
+</table>
+
+<h3>Tab 2 — Deals</h3>
+<p>A table of your private deal investments (real estate funds, private equity, etc.).</p>
+<table>
+  <tr><th>Column</th><th>Description</th></tr>
+  <tr><td>Deal Name</td><td>Name of the investment</td></tr>
+  <tr><td>Platform</td><td>Where the deal is managed</td></tr>
+  <tr><td>Invested Capital</td><td>Total amount you have paid in (capital calls)</td></tr>
+  <tr><td>Distributions</td><td>Total cash returned to you</td></tr>
+  <tr><td>NAV</td><td>Current net asset value of your share</td></tr>
+  <tr><td>MOIC</td><td>Multiple on invested capital (e.g. 1.5x means 50% return)</td></tr>
+  <tr><td>XIRR</td><td>Annualized return rate accounting for timing of cashflows</td></tr>
+  <tr><td>Status</td><td>Active, Exited, or Pending</td></tr>
+</table>
+
+<div class="tip"><strong>What is XIRR?</strong> XIRR is the true annualized return that accounts for when you invested and when you received distributions. It is more accurate than simple ROI for deals with irregular cashflows.</div>
+
+<h2>5. Insights Page</h2>
+<p>Wealth OS automatically analyzes your portfolio and flags potential issues. Each alert has a severity level:</p>
+
+<p>
+  <span class="badge badge-red">High</span> — Requires immediate attention<br>
+  <span class="badge badge-yellow">Medium</span> — Worth reviewing soon<br>
+  <span class="badge badge-blue">Low</span> — Informational, no urgent action needed<br>
+  <span class="badge badge-green">Info</span> — General portfolio observation
+</p>
+
+<h3>Types of Alerts</h3>
+<table>
+  <tr><th>Alert Type</th><th>What It Means</th></tr>
+  <tr><td>Concentration Risk</td><td>Too much of your portfolio in one stock or sector</td></tr>
+  <tr><td>Currency Exposure</td><td>High exposure to a non-SAR currency without hedging</td></tr>
+  <tr><td>Negative Return</td><td>A position is significantly down from your cost basis</td></tr>
+  <tr><td>Stale Price Data</td><td>Price data has not been updated recently</td></tr>
+  <tr><td>Low Diversification</td><td>Portfolio spread across too few assets</td></tr>
+</table>
+
+<p>Each alert includes a <strong>Recommendation</strong> suggesting what action to consider.</p>
+
+<h2>6. Imports Page</h2>
+<p>Use this page to upload your brokerage statements and import transaction history.</p>
+
+<h3>How to Import a File</h3>
+
+<div class="step">
+  <div class="step-num">1</div>
+  <div><strong>Download your statement</strong> from your broker's platform as a CSV or Excel file</div>
+</div>
+<div class="step">
+  <div class="step-num">2</div>
+  <div>Go to the <strong>Imports</strong> page in Wealth OS</div>
+</div>
+<div class="step">
+  <div class="step-num">3</div>
+  <div>Click <strong>Upload File</strong> and select your CSV or XLSX file</div>
+</div>
+<div class="step">
+  <div class="step-num">4</div>
+  <div>Select your <strong>Platform</strong> from the dropdown (e.g. Derayah, Al Rajhi)</div>
+</div>
+<div class="step">
+  <div class="step-num">5</div>
+  <div>Click <strong>Preview</strong> — the system shows you a sample of the rows it will import</div>
+</div>
+<div class="step">
+  <div class="step-num">6</div>
+  <div>Review the preview, then click <strong>Run Import</strong> to save the data</div>
+</div>
+<div class="step">
+  <div class="step-num">7</div>
+  <div>The system shows <strong>rows imported</strong>, <strong>rows skipped</strong>, and any errors</div>
+</div>
+
+<h3>Import Status Meanings</h3>
+<table>
+  <tr><th>Status</th><th>Meaning</th></tr>
+  <tr><td>Pending</td><td>File uploaded, not yet processed</td></tr>
+  <tr><td>Preview</td><td>File parsed and ready to review</td></tr>
+  <tr><td>Processing</td><td>Import is currently running</td></tr>
+  <tr><td>Completed</td><td>All rows imported successfully</td></tr>
+  <tr><td>Partial</td><td>Some rows imported, some had errors</td></tr>
+  <tr><td>Failed</td><td>Import could not be completed — check error log</td></tr>
+</table>
+
+<h3>Import History</h3>
+<p>The bottom of the Imports page shows all previous imports with their status, date, and row counts. You can review any past import to see what was processed.</p>
+
+<div class="note"><strong>Duplicate Prevention:</strong> The system checks for duplicate transactions using unique identifiers. Importing the same file twice will not create duplicate records.</div>
+
+<h2>7. Supported Platforms</h2>
+<table>
+  <tr><th>Platform</th><th>Type</th><th>Import Supported</th></tr>
+  <tr><td>Derayah</td><td>Brokerage</td><td>Yes — CSV</td></tr>
+  <tr><td>Al Rajhi Capital</td><td>Brokerage</td><td>Yes — CSV</td></tr>
+  <tr><td>Alinma Invest</td><td>Brokerage</td><td>Yes — CSV</td></tr>
+  <tr><td>Tarmeez</td><td>Brokerage</td><td>Yes — CSV</td></tr>
+  <tr><td>Tamra</td><td>Deals / Funds</td><td>Yes — CSV</td></tr>
+  <tr><td>Aseel</td><td>Deals / Funds</td><td>Yes — CSV</td></tr>
+  <tr><td>Manafa</td><td>Deals / Funds</td><td>Yes — CSV</td></tr>
+  <tr><td>Safqah</td><td>Deals / Funds</td><td>Yes — CSV</td></tr>
+  <tr><td>Awaed</td><td>Deals / Funds</td><td>Yes — CSV</td></tr>
+  <tr><td>Sukuk (Generic)</td><td>Sukuk / Bonds</td><td>Yes — CSV</td></tr>
+</table>
+
+<h2>8. CSV Import Templates</h2>
+<p>If your broker's export format does not match, you can use the standard templates provided in the <code>templates/</code> folder:</p>
+
+<table>
+  <tr><th>Template File</th><th>Use For</th></tr>
+  <tr><td>brokerage_standard_template.csv</td><td>Manually entering stock/fund transactions</td></tr>
+  <tr><td>deal_standard_template.csv</td><td>Manually entering deal capital calls and distributions</td></tr>
+</table>
+
+<h3>Brokerage Template Columns</h3>
+<table>
+  <tr><th>Column</th><th>Required</th><th>Example</th></tr>
+  <tr><td>trade_date</td><td>Yes</td><td>2024-03-15</td></tr>
+  <tr><td>symbol</td><td>Yes</td><td>2222</td></tr>
+  <tr><td>asset_name</td><td>No</td><td>Saudi Aramco</td></tr>
+  <tr><td>transaction_type</td><td>Yes</td><td>BUY / SELL / DIVIDEND</td></tr>
+  <tr><td>quantity</td><td>Yes</td><td>100</td></tr>
+  <tr><td>price</td><td>Yes</td><td>28.50</td></tr>
+  <tr><td>fees</td><td>No</td><td>15.00</td></tr>
+  <tr><td>currency</td><td>No</td><td>SAR</td></tr>
+</table>
+
+<h3>Deal Template Columns</h3>
+<table>
+  <tr><th>Column</th><th>Required</th><th>Example</th></tr>
+  <tr><td>date</td><td>Yes</td><td>2024-01-10</td></tr>
+  <tr><td>deal_name</td><td>Yes</td><td>Manafa Real Estate Fund 1</td></tr>
+  <tr><td>cashflow_type</td><td>Yes</td><td>CAPITAL_CALL / DISTRIBUTION</td></tr>
+  <tr><td>amount</td><td>Yes</td><td>50000</td></tr>
+  <tr><td>currency</td><td>No</td><td>SAR</td></tr>
+  <tr><td>notes</td><td>No</td><td>Q1 2024 distribution</td></tr>
+</table>
+
+<h2>9. Frequently Asked Questions</h2>
+
+<h3>Why is my portfolio value showing as zero?</h3>
+<p>You need to import transaction data first. Go to the <strong>Imports</strong> page, upload a file from your broker, and run the import. After that, the Overview page will show your holdings.</p>
+
+<h3>Why does my return percentage look different from my broker's app?</h3>
+<p>Wealth OS uses the <strong>FIFO method</strong> (First In, First Out) to calculate cost basis, which may differ from the method your broker uses. Also, Wealth OS includes fees in the cost basis calculation.</p>
+
+<h3>Can I track investments in USD or other currencies?</h3>
+<p>Yes. Wealth OS supports multiple currencies. Each transaction can have its own currency, and the system converts values to SAR using FX rates for the portfolio summary.</p>
+
+<h3>What happens if I import the same file twice?</h3>
+<p>The system uses unique identifiers to detect duplicates. If a transaction already exists, it will be skipped and counted in the "rows skipped" count.</p>
+
+<h3>My broker is not in the supported list. Can I still import?</h3>
+<p>Yes — use the standard brokerage or deal CSV template from the <code>templates/</code> folder. Fill in your transactions manually in that format and import it using the "Generic" parser option.</p>
+
+<h3>How do I log out?</h3>
+<p>Currently, your session expires automatically after 24 hours. To log out immediately, clear your browser's local storage or close the browser tab.</p>
+
+<h3>Where is my data stored?</h3>
+<p>All data is stored locally in a PostgreSQL database running on your machine inside Docker. Nothing is sent to any external server.</p>
+
+<div class="tip" style="margin-top:40px;">
+  <strong>Need help?</strong> Contact your system administrator or the development team for support.
+</div>
+
+</body>
+</html>
